@@ -1,0 +1,156 @@
+package Mantenimientos;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import Entidad.Tienda;
+import Util.ConexionBD;
+
+public class GestionTienda {
+	ConexionBD con = new ConexionBD();
+	Connection cn = null;
+	PreparedStatement pstm = null;
+	Statement stm = null;
+	ResultSet rs = null;
+	int r;
+	
+	public Tienda buscar(String codProdTie) {
+		Tienda tie = new Tienda();
+		String mysql = "select * from productoTienda where codProdTie =?";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setString(1, codProdTie);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				tie.setCodProdTie(rs.getString(1));
+				tie.setNomProdTie(rs.getString(2));
+				tie.setProveedor(rs.getString(3));
+				tie.setCategoria(rs.getString(4));
+				tie.setPrecio(rs.getDouble(5));
+				tie.setStock(rs.getInt(6));
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return tie;
+	}
+	public int actualizarStock(String codProdTie, int stock) {
+		String mysql = "update productoTienda set stock=? where codProdTie=?";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setInt(1, stock);
+			pstm.setString(2, codProdTie);
+			pstm.executeUpdate();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return r;
+	}
+	
+	public List<Tienda> Listar(){
+		List<Tienda> lista = new ArrayList<>();
+		String mysql = "select * from productoTienda";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				Tienda tie = new Tienda();
+				tie.setCodProdTie(rs.getString(1));
+				tie.setNomProdTie(rs.getString(2));
+				tie.setProveedor(rs.getString(3));
+				tie.setCategoria(rs.getString(4));
+				tie.setPrecio(rs.getDouble(5));
+				tie.setStock(rs.getInt(6));
+				lista.add(tie);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
+	
+	public void agregar(Tienda tie) throws Exception {
+		String mysql = "insert into productoTienda values(?,?,?,?,?,?)";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setString(1, tie.getCodProdTie());
+			pstm.setString(2, tie.getNomProdTie());
+			pstm.setString(3, tie.getProveedor());
+			pstm.setString(4, tie.getCategoria());
+			pstm.setDouble(5, tie.getPrecio());
+			pstm.setInt(6, tie.getStock());
+			pstm.execute();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Tienda listarCod(String codProdTie) {
+		Tienda tie = new Tienda();
+		String mysql = "select * from productoTienda where codProdTie=?";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setString(1, codProdTie);
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				tie.setCodProdTie(rs.getString(1));
+				tie.setNomProdTie(rs.getString(2));
+				tie.setProveedor(rs.getString(3));
+				tie.setCategoria(rs.getString(4));
+				tie.setPrecio(rs.getDouble(5));
+				tie.setStock(rs.getInt(6));
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return tie;
+	}
+	
+	public void actualizar(Tienda tie) {
+		String mysql = "update productoTienda set nomProdtie=?, proveedor=?, categoria=?, precio=?, stock=? where codProdTie=?";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setString(1, tie.getNomProdTie());
+			pstm.setString(2, tie.getProveedor());
+			pstm.setString(3, tie.getCategoria());
+			pstm.setDouble(4, tie.getPrecio());
+			pstm.setInt(5, tie.getStock());
+			pstm.setString(6, tie.getCodProdTie());
+			pstm.execute();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void eliminar(String codProdTie) {
+		String mysql = "delete from productoTienda where codProdTie=?";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setString(1, codProdTie);
+			pstm.execute();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

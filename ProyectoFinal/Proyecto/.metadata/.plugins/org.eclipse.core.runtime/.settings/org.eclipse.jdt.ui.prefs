@@ -1,0 +1,10 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="Entidad.Empleado"><rhs name\="Entidad.Empleado"/></lhs><lhs name\="Entidad.Cliente"><rhs name\="Entidad.Cliente"/></lhs><lhs name\="Entidad.Combustible"><rhs name\="Entidad.Combustible"/></lhs><lhs name\="Entidad.Tienda"><rhs name\="Entidad.Tienda"/></lhs><lhs name\="Mantenimientos.GestionCliente"><rhs name\="Mantenimientos.GestionCliente"/></lhs><lhs name\="Mantenimientos.GestionCombustible"><rhs name\="Mantenimientos.GestionCombustible"/></lhs><lhs name\="Mantenimientos.GestionTienda"><rhs name\="Mantenimientos.GestionTienda"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="Entidad.Venta"><rhs name\="Entidad.Venta"/></lhs><lhs name\="Mantenimientos.GestionVentas"><rhs name\="Mantenimientos.GestionVentas"/></lhs><lhs name\="Entidad.GenerarSerie"><rhs name\="Entidad.GenerarSerie"/></lhs></history>
+content_assist_number_of_computers=17
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+org.eclipse.jdt.ui.formatterprofiles.version=22
+spelling_locale_initialized=true
+typefilter_migrated_2=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

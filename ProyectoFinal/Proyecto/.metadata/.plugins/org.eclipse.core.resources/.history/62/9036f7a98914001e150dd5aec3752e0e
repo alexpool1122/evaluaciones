@@ -1,0 +1,48 @@
+package Mantenimientos;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import Util.ConexionBD;
+
+public class GestionVentas {
+	ConexionBD con = new ConexionBD();
+	Connection cn = null;
+	PreparedStatement pstm = null;
+	ResultSet rs = null;
+	
+	public String GenerarCodigo() {
+		String numSerie = "";
+		String mysql = "select max(numSerie) from boleta";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				numSerie = rs.getString(1);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return numSerie;
+	}
+	public String codVentas() {
+		String codVentas = "";
+		String mysql = "select max(codBoleta) from boleta";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				codVentas = rs.getString(1);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return codVentas;
+	}
+}

@@ -1,0 +1,8 @@
+127.0.0.1 - - [19/Jun/2023:10:54:04 -0500] "GET / HTTP/1.1" 404 687
+0:0:0:0:0:0:0:1 - - [19/Jun/2023:10:54:06 -0500] "GET /Centenario2023/Login.jsp HTTP/1.1" 200 2124
+0:0:0:0:0:0:0:1 - - [19/Jun/2023:10:54:06 -0500] "GET /Centenario2023/Img/Fondo.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [19/Jun/2023:10:54:07 -0500] "GET /Centenario2023/Img/usuario.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [19/Jun/2023:10:54:07 -0500] "GET /favicon.ico HTTP/1.1" 404 698
+0:0:0:0:0:0:0:1 - - [19/Jun/2023:10:54:18 -0500] "POST /Centenario2023/ValidarServlet HTTP/1.1" 200 5226
+0:0:0:0:0:0:0:1 - - [19/Jun/2023:10:54:18 -0500] "GET /Centenario2023/Inicio.jsp HTTP/1.1" 200 6290
+0:0:0:0:0:0:0:1 - - [19/Jun/2023:10:54:20 -0500] "GET /Centenario2023/Controlador?menu=Venta&accion=default HTTP/1.1" 200 7134

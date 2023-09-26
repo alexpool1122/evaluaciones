@@ -1,0 +1,81 @@
+package Mantenimientos;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import Entidad.Venta;
+import Util.ConexionBD;
+
+public class GestionVentas {
+	ConexionBD con = new ConexionBD();
+	Connection cn = null;
+	PreparedStatement pstm = null;
+	ResultSet rs = null;
+	
+	public String GenerarCodigo() {
+		String numSerie = "";
+		String mysql = "select max(numSerie) from boleta";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				numSerie = rs.getString(1);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return numSerie;
+	}
+	public String codVentas() {
+		String codVentas = "";
+		String mysql = "select max(codBoleta) from boleta";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				codVentas = rs.getString(1);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return codVentas;
+	}
+	public void GuargarVenta(Venta v) {
+		String mysql= "insert into boleta (codCliente, codEmpleado, numSerie, totalPagar) values (?,?,?,?)";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setString(1, v.getCodCliente());
+			pstm.setString(2, v.getCodEmpleado());
+			pstm.setString(3, v.getNumSerie());
+			pstm.setDouble(4, v.getMontoTotal());
+			pstm.execute();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void GuardadDetalle(Venta ve) {
+		String mysql = "insert into detalleVenta(codBoleta, codProdTie, codProdComb, cantidad, precioVenta)values(?,?,?,?,?)";
+		try {
+			cn = con.conectar();
+			pstm = cn.prepareStatement(mysql);
+			pstm.setInt(1, ve.getCodBoleta());
+			pstm.setString(2, ve.getCodCliente());
+			pstm.setString(3, ve.getCodProdTie());
+			pstm.setString(4, ve.getCodProdComb());
+			pstm.setInt(5, ve.getCantidad());
+			pstm.setDouble(6, ve.getPrecio());
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
