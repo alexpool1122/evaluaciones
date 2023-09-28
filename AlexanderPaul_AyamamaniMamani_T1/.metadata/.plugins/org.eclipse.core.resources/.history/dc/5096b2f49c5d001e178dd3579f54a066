@@ -1,0 +1,5 @@
+package com.ciberte.lp2.repositorio;
+
+public interface IMedicamentosRepositorio {
+
+}

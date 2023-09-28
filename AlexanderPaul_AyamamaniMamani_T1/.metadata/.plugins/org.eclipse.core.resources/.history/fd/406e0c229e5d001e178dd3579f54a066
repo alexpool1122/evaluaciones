@@ -1,0 +1,26 @@
+package com.ciberte.lp2.controlador;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ciberte.lp2.entidades.Medicamentos;
+import com.ciberte.lp2.repositorio.IMedicamentosRepositorio;
+
+@Controller
+@RequestMapping("/medicamentos")
+public class MedicamentosController {
+	@Autowired
+	private IMedicamentosRepositorio medicamentoRepositorio;
+	
+	@GetMapping("/")
+	public String listarLibros(Model model) {
+		List<Medicamentos> medicamentos = medicamentoRepositorio.findAll();
+		model.addAttribute("medicamentos", medicamentos);
+		return "listarmedicamentos"; // nombre de la vista
+	}
+}
